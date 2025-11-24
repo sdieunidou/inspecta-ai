@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace InspectaAi\Analyzer;
 
+use InspectaAi\Analyzer\Loader\FileLoaderInterface;
 use InspectaAi\Configuration\Configuration;
 
 class Analyzer
 {
     public function __construct(
         private Configuration $configuration,
-        private FileLoader $fileLoader = new FileLoader(),
+        private FileLoaderInterface $fileLoader,
     ) {
     }
 

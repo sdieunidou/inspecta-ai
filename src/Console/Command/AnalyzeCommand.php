@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace InspectaAi\Console\Command;
 
 use InspectaAi\Analyzer\Analyzer;
+use InspectaAi\Analyzer\Loader\FileLoader;
 use InspectaAi\Configuration\Configuration;
 use InspectaAi\Configuration\Loader\YamlLoader;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -27,7 +28,7 @@ class AnalyzeCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $configuration = new Configuration(new YamlLoader($input->getOption('config')));
-        $analyzer = new Analyzer($configuration);
+        $analyzer = new Analyzer($configuration, new FileLoader());
 
         $analyzer->analyze(
             $input->getArgument('prompt'),

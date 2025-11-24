@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace InspectaAi\Analyzer;
+namespace InspectaAi\Analyzer\Loader;
 
-class FileLoader
+class FileLoader implements FileLoaderInterface
 {
     public function load(string $file): string
     {
