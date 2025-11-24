@@ -73,7 +73,6 @@ class Configuration
                 ->setAllowedTypes('model', 'string')
                 ->setAllowedTypes('timeout', 'int')
                 ->setNormalizer('timeout', Closure::fromCallable([TimeoutNormalizer::class, 'normalize']))
-                ->setNormalizer('binary', Closure::fromCallable([BinaryPathNormalizer::class, 'normalize']))
             ;
         });
 
