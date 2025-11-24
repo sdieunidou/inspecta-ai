@@ -10,7 +10,7 @@ use Symfony\Component\Console\Application as BaseApplication;
 final class Application extends BaseApplication
 {
     public const NAME = 'Inspecta AI';
-    public const VERSION = '0.0.4-DEV';
+    public const VERSION = '0.0.5-DEV';
 
     public function __construct()
     {

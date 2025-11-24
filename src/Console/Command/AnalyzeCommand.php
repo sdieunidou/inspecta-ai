@@ -21,7 +21,7 @@ class AnalyzeCommand extends Command
     protected function configure(): void
     {
         $this->addArgument('prompt', InputArgument::REQUIRED, 'The prompt configuration to use');
-        $this->addArgument('file', InputArgument::REQUIRED, 'The file to analyze');
+        $this->addArgument('files', InputArgument::IS_ARRAY | InputArgument::REQUIRED, 'The file to analyze');
         $this->addOption('config', 'c', InputOption::VALUE_OPTIONAL, 'The configuration file to use', 'inspecta-ai.yaml');
     }
 
@@ -35,12 +35,14 @@ class AnalyzeCommand extends Command
         $analyzerFactory = new AnalyzerFactory($configLoader, $runnerRegistry);
         $analyzer = $analyzerFactory->create();
 
-        $result = $analyzer->analyze(
-            $input->getArgument('prompt'),
-            $input->getArgument('file'),
-        );
+        foreach ($input->getArgument('files') as $file) {
+            $result = $analyzer->analyze(
+                $input->getArgument('prompt'),
+                $file,
+            );
 
-        $output->writeln($result->getRawResult());
+            $output->writeln($result->getRawResult());
+        }
 
         return Command::SUCCESS;
     }
