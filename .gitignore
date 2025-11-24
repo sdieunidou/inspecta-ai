@@ -7,3 +7,5 @@
 /.php-cs-fixer.cache
 /box.json
 /inspecta-ai.phar
+*.log
+/solid_violations.php
