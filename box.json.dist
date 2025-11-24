@@ -1,6 +1,7 @@
 {
     "$schema": "https://box-project.github.io/box/config-schema.json",
     "alias": "inspecta-ai.phar",
+    "dump-autoload": false,
     "compression": "GZ",
     "directories": [
         "src"
