@@ -1,0 +1,11 @@
+providers:
+  llama3.2:
+    type: ollama
+    binary: /usr/local/bin/ollama
+    model: llama3.2
+    timeout: 60
+
+prompts:
+  solid_violations:
+    template: tests/data/prompt/solid.prompt
+    provider: llama3.2
