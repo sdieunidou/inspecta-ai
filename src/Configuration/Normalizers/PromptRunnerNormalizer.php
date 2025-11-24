@@ -7,20 +7,20 @@ namespace InspectaAi\Configuration\Normalizers;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Options;
 
-final class PromptProviderNormalizer
+final class PromptRunnerNormalizer
 {
     public static function normalize(Options $options, array $prompts): array
     {
-        $availableProviders = array_keys($options['providers'] ?? []);
+        $availableRunners = array_keys($options['runners'] ?? []);
 
         foreach ($prompts as $name => $promptConfig) {
-            $provider = $promptConfig['provider'] ?? null;
-            if (!\in_array($provider, $availableProviders, true)) {
+            $runner = $promptConfig['runner'] ?? null;
+            if (!\in_array($runner, $availableRunners, true)) {
                 throw new InvalidOptionsException(\sprintf(
-                    'Prompt "%s" references an unknown provider "%s". Available providers: %s',
+                    'Prompt "%s" references an unknown runner "%s". Available runners: %s',
                     (string) $name,
-                    (string) $provider,
-                    implode(', ', $availableProviders)
+                    (string) $runner,
+                    implode(', ', $availableRunners)
                 ));
             }
         }
