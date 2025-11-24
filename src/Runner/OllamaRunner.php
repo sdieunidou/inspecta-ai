@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace InspectaAi\Runner;
 
+use InspectaAi\Analyzer\Request\AnalysisRequest;
 use InspectaAi\Exception\RunnerExecutionException;
-use InspectaAi\Runner\Context\RunnerContext;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 class OllamaRunner implements RunnerInterface
 {
-    public function analyze(string $prompt, string $content, RunnerContext $context): string
+    public function analyze(AnalysisRequest $request): string
     {
-        $runnerConfig = $context->getRunnerConfig();
+        $runnerConfig = $request->context->getRunnerConfig();
 
         $process = new Process([
             $runnerConfig['binary'],
             'run',
             $runnerConfig['model'],
-            $prompt,
-            $content,
+            $request->prompt,
+            $request->content,
         ]);
 
         $process->setTimeout($runnerConfig['timeout']);
@@ -29,7 +29,7 @@ class OllamaRunner implements RunnerInterface
             $process->mustRun();
         } catch (ProcessFailedException $e) {
             throw RunnerExecutionException::fromProcess(
-                $context->getRunnerName(),
+                $request->context->getRunnerName(),
                 $e->getMessage()
             );
         }

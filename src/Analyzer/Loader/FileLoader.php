@@ -9,19 +9,19 @@ use InspectaAi\Exception\FileNotReadableException;
 
 class FileLoader implements FileLoaderInterface
 {
-    public function load(string $file): string
+    public function load(string $filepath): string
     {
-        if (!is_file($file)) {
-            throw FileNotFoundException::forFile($file);
+        if (!is_file($filepath)) {
+            throw FileNotFoundException::forFile($filepath);
         }
 
-        if (!is_readable($file)) {
-            throw FileNotReadableException::forFile($file);
+        if (!is_readable($filepath)) {
+            throw FileNotReadableException::forFile($filepath);
         }
 
-        $content = @file_get_contents($file);
+        $content = file_get_contents($filepath);
         if ($content === false) {
-            throw new \RuntimeException(\sprintf('Failed to read file "%s"', $file));
+            throw new \RuntimeException(\sprintf('Failed to read file "%s"', $filepath));
         }
 
         return $content;
