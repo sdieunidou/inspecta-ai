@@ -9,15 +9,7 @@ Inspecta AI is a PHP CLI tool that runs configurable AI analyses on selected fil
 ## Installation
 
 ```sh
-composer install
-```
-
-## Compilation
-
-To build the PHAR using Box:
-
-```sh
-vendor/bin/box compile
+composer require --dev sdieunidou/inspecta-ai
 ```
 
 ## Configuration
@@ -52,7 +44,7 @@ You can use [`src/Runner/OllamaRunner.php`](src/Runner/OllamaRunner.php) as a re
 ## Usage
 
 ```sh
-./inspecta-ai analyze solid_violations tests/data/scripts/solid_violations.php -c tests/data/config/inspecta-ai.yaml
+./vendor/bin/inspecta-ai analyze solid_violations tests/data/scripts/solid_violations.php -c tests/data/config/inspecta-ai.yaml
 ```
 
 Example output:
