@@ -20,28 +20,26 @@ To build the PHAR using Box:
 vendor/bin/box compile
 ```
 
-## How to use
-
-### Configuration
+## Configuration
 
 - Project-level settings live in `inspecta-ai.yaml`. See [`tests/data/config/inspecta-ai.yaml`](tests/data/config/inspecta-ai.yaml) for a sample describing runners (`ollama`, model, binary path, timeout) and which prompt to use.
 - Prompt templates are plain text files referenced by name in the configuration. [`tests/data/prompt/solid.prompt`](tests/data/prompt/solid.prompt) shows how to describe expectations for the `solid_violations` analysis (structure of the response, precision required, JSON format, etc.). Update or duplicate it to create new prompts tailored to your use cases.
 
-#### Available Template Variables
+### Available Template Variables
 
 Prompt templates support variables that are automatically replaced during processing:
 
 - `%%file%%` - The file path of the file being analyzed
 
-### Runners
+## Runners
 
 Runners are responsible for executing AI analyses by interfacing with different AI providers or local tools.
 
-#### Available Runners
+### Available Runners
 
 - **Ollama** - For running analyses locally using Ollama. Configured in `inspecta-ai.yaml` with `binary` (path to Ollama CLI), `model`, and `timeout` settings.
 
-#### Creating a New Runner
+### Creating a New Runner
 
 To add support for other AI providers (e.g., OpenAI, Gemini), create a new class implementing `RunnerInterface`:
 
@@ -125,4 +123,3 @@ Example output:
   "score": 80
 }
 ```
-
