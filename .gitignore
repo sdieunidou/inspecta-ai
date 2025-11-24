@@ -1,0 +1,6 @@
+/prototype.php
+/spec.md
+/vendor/
+/.env
+/composer.lock
+/.php-cs-fixer.cache

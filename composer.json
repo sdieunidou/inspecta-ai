@@ -1,0 +1,32 @@
+{
+    "name": "sdieunidou/inspecta-ai",
+    "description": "Inspecta AI is a PHP CLI tool that applies configurable AI analyses to selected files",
+    "type": "application",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sébastien Dieunidou",
+            "email": "s.dieunidou@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "InspectaAi\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.4",
+        "symfony/console": "^7.3",
+        "symfony/process": "^7.3"
+    },
+    "bin": [
+        "inspecta-ai"
+    ],
+    "config": {
+        "prefer-stable": true,
+        "sort-packages": true
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.90"
+    }
+}
