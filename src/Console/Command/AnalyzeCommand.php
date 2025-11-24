@@ -32,8 +32,8 @@ class AnalyzeCommand extends Command
             new OllamaRunner(),
         ]);
 
-        $factory = new AnalyzerFactory($configLoader, $runnerRegistry);
-        $analyzer = $factory->create();
+        $analyzerFactory = new AnalyzerFactory($configLoader, $runnerRegistry);
+        $analyzer = $analyzerFactory->create();
 
         $result = $analyzer->analyze(
             $input->getArgument('prompt'),
