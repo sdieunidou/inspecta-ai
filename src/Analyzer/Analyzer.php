@@ -9,19 +9,15 @@ use InspectaAi\Analyzer\AnalysisResult;
 class Analyzer
 {
     public function __construct(
-        private AnalysisOrchestrator $orchestrator,
+        private AnalysisRequestFactory $requestFactory,
     ) {
     }
 
     public function analyze(string $prompt, string $file): AnalysisResult
     {
-        $request = $this->orchestrator->orchestrate($prompt, $file);
+        $request = $this->requestFactory->create($prompt, $file);
 
-        $rawResult = $request->context->getRunner()->analyze(
-            $request->prompt,
-            $request->content,
-            $request->context,
-        );
+        $rawResult = $request->context->getRunner()->analyze($request);
 
         return new AnalysisResult($rawResult);
     }

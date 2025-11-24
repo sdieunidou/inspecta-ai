@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace InspectaAi\Analyzer;
 
-use InspectaAi\Analyzer\AnalysisOrchestrator;
-use InspectaAi\Analyzer\Analyzer;
 use InspectaAi\Analyzer\Loader\FileLoader;
 use InspectaAi\Analyzer\Loader\FileLoaderInterface;
 use InspectaAi\Analyzer\Prompt\PromptPreprocessor;
@@ -31,12 +29,12 @@ final class AnalyzerFactory
         $contextFactory = new RunnerContextFactory($configuration, $this->runnerRegistry);
         $promptPreprocessor = new PromptPreprocessor();
 
-        $orchestrator = new AnalysisOrchestrator(
+        $requestFactory = new AnalysisRequestFactory(
             $contextFactory,
             $this->fileLoader,
             $promptPreprocessor,
         );
 
-        return new Analyzer($orchestrator);
+        return new Analyzer($requestFactory);
     }
 }
