@@ -27,8 +27,8 @@ class AnalyzeCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $configuration = new Configuration(new YamlLoader($input->getOption('config')));
-
         $analyzer = new Analyzer($configuration);
+
         $analyzer->analyze(
             $input->getArgument('prompt'),
             $input->getArgument('file'),
