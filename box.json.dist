@@ -1,0 +1,33 @@
+{
+    "$schema": "https://box-project.github.io/box/config-schema.json",
+    "alias": "inspecta-ai.phar",
+    "compression": "GZ",
+    "directories": [
+        "src"
+    ],
+    "files": [
+        "inspecta-ai",
+        "composer.json",
+        "composer.lock"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "in": "vendor",
+            "exclude": [
+                "bin",
+                "Tests",
+                "tests",
+                "docs"
+            ],
+            "ignoreVCS": true
+        },
+        {
+            "in": "vendor/symfony/console/Resources",
+            "notName": [
+                "*.md"
+            ],
+            "ignoreVCS": true
+        }
+    ]
+}

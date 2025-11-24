@@ -24,9 +24,13 @@
     ],
     "config": {
         "prefer-stable": true,
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        }
     },
     "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.8",
         "friendsofphp/php-cs-fixer": "^3.90"
     }
 }

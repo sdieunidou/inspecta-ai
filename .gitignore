@@ -1,6 +1,9 @@
 /prototype.php
 /spec.md
 /vendor/
+/vendor-bin/
 /.env
 /composer.lock
 /.php-cs-fixer.cache
+/box.json
+/inspecta-ai.phar
