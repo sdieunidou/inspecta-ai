@@ -4,20 +4,24 @@ declare(strict_types=1);
 
 namespace InspectaAi\Analyzer\Loader;
 
+use InspectaAi\Exception\FileNotFoundException;
+use InspectaAi\Exception\FileNotReadableException;
+
 class FileLoader implements FileLoaderInterface
 {
     public function load(string $file): string
     {
         if (!is_file($file)) {
-            throw new \InvalidArgumentException(\sprintf('File "%s" not found', $file));
+            throw FileNotFoundException::forFile($file);
         }
 
         if (!is_readable($file)) {
-            throw new \InvalidArgumentException(\sprintf('File "%s" is not readable', $file));
+            throw FileNotReadableException::forFile($file);
         }
 
-        if (false === $content = file_get_contents($file)) {
-            throw new \InvalidArgumentException(\sprintf('Failed to read file "%s"', $file));
+        $content = @file_get_contents($file);
+        if ($content === false) {
+            throw new \RuntimeException(\sprintf('Failed to read file "%s"', $file));
         }
 
         return $content;
