@@ -7,6 +7,7 @@ namespace InspectaAi\Analyzer;
 use InspectaAi\Analyzer\Loader\FileLoader;
 use InspectaAi\Analyzer\Loader\FileLoaderInterface;
 use InspectaAi\Analyzer\Prompt\PromptPreprocessor;
+use InspectaAi\Analyzer\Request\AnalysisRequestFactory;
 use InspectaAi\Configuration\Configuration;
 use InspectaAi\Configuration\Loader\LoaderInterface;
 use InspectaAi\Runner\Context\RunnerContextFactory;

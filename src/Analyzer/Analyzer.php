@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace InspectaAi\Analyzer;
 
-use InspectaAi\Analyzer\AnalysisResult;
+use InspectaAi\Analyzer\Request\AnalysisRequestFactory;
+use InspectaAi\Analyzer\Result\AnalysisResult;
 
 class Analyzer
 {

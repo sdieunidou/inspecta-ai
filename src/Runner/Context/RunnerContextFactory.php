@@ -17,10 +17,16 @@ final class RunnerContextFactory
 
     public function create(string $promptName, string $filepath): RunnerContext
     {
-        return RunnerContext::fromPrompt(
+        $promptConfig = $this->configuration->getPromptConfig($promptName);
+        $runnerConfig = $this->configuration->getRunnerConfig($promptConfig['runner']);
+        $runner = $this->runnerRegistry->get($runnerConfig['type']);
+
+        return new RunnerContext(
             $promptName,
-            $this->configuration,
-            $this->runnerRegistry,
+            $promptConfig,
+            $promptConfig['runner'],
+            $runnerConfig,
+            $runner,
             $filepath,
         );
     }

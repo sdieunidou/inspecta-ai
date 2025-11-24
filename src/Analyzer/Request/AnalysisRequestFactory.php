@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace InspectaAi\Analyzer;
+namespace InspectaAi\Analyzer\Request;
 
 use InspectaAi\Analyzer\Loader\FileLoaderInterface;
 use InspectaAi\Analyzer\Prompt\PromptPreprocessor;

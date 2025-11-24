@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace InspectaAi\Runner;
 
-use InspectaAi\Analyzer\AnalysisRequest;
+use InspectaAi\Analyzer\Request\AnalysisRequest;
 use InspectaAi\Exception\RunnerExecutionException;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;

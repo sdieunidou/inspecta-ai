@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace InspectaAi\Analyzer;
+namespace InspectaAi\Analyzer\Request;
 
 use InspectaAi\Runner\Context\RunnerContext;
 
