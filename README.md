@@ -43,7 +43,7 @@ Runners are responsible for executing AI analyses by interfacing with different 
 
 To add support for other AI providers (e.g., OpenAI, Gemini), create a new class implementing `RunnerInterface`:
 
-- Implement the `analyze(string $prompt, string $content, RunnerContext $context): string` method that executes the analysis and returns the raw result
+- Implement the `public function analyze(AnalysisRequest $request): string` method that executes the analysis and returns the raw result
 - Implement the `supports(string $runnerType): bool` method that returns `true` for the runner type identifier
 - Register your runner in the `RunnerRegistry` when creating the `Analyzer` instance
 
