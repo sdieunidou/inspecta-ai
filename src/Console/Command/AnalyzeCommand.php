@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace InspectaAi\Console\Command;
 
-use InspectaAi\Analyzer\Analyzer;
-use InspectaAi\Analyzer\Loader\FileLoader;
-use InspectaAi\Configuration\Configuration;
+use InspectaAi\Analyzer\AnalyzerFactory;
 use InspectaAi\Configuration\Loader\YamlLoader;
 use InspectaAi\Runner\OllamaRunner;
 use InspectaAi\Runner\RunnerRegistry;
@@ -29,12 +27,13 @@ class AnalyzeCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $configuration = new Configuration(new YamlLoader($input->getOption('config')));
+        $configLoader = new YamlLoader($input->getOption('config'));
         $runnerRegistry = new RunnerRegistry([
             new OllamaRunner(),
         ]);
 
-        $analyzer = new Analyzer($configuration, new FileLoader(), $runnerRegistry);
+        $factory = new AnalyzerFactory($configLoader, $runnerRegistry);
+        $analyzer = $factory->create();
 
         $result = $analyzer->analyze(
             $input->getArgument('prompt'),

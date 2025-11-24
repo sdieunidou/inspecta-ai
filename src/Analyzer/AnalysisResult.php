@@ -6,11 +6,17 @@ namespace InspectaAi\Analyzer;
 
 final class AnalysisResult
 {
-    public function __construct(private string $rawResult)
+    private string $rawResult;
+
+    public function __construct(string $rawResult)
+    {
+        $this->setRawResult($rawResult);
+    }
+
+    private function setRawResult(string $rawResult): void
     {
         $this->rawResult = trim($rawResult);
     }
-
     public function getRawResult(): string
     {
         return $this->rawResult;
