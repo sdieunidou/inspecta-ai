@@ -24,6 +24,13 @@ jobs:
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
+    - name: Composer security audit
+      run: composer audit
+
+    - name: Check code style with PHP-CS-Fixer
+      run: |
+        vendor/bin/php-cs-fixer fix --dry-run --diff
+
     - name: Cache Composer packages
       id: composer-cache
       uses: actions/cache@v3
